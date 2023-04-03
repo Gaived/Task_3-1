@@ -9,8 +9,9 @@ public class Main {
         persons.add(new Person("Genri", "Petrov-Sidorov", 10));
         persons.add(new Person("Mark", "Petrov", 27));
 
-        Collections.sort(persons, new PersonComparator());
-        System.out.println(persons);
+        persons.removeIf(person -> person.getAge() <18);
+
+        persons.forEach(System.out::println);
 
     }
 }
