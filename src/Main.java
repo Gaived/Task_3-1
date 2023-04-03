@@ -9,8 +9,18 @@ public class Main {
         persons.add(new Person("Genri", "Petrov-Sidorov", 10));
         persons.add(new Person("Mark", "Petrov", 27));
 
-        Collections.sort(persons, new PersonComparator());
-        System.out.println(persons);
+        Collections.sort(persons, (o1, o2) -> {
+            int length1 = o1.getSurname().split("-").length;
+            int length2 = o2.getSurname().split("-").length;
+            if (length1 > length2) {
+                return -1;
+            }
+            if (length1 < length2) {
+                return 1;
+            }
+            return o2.getAge() - o1.getAge();
+        });
 
+        persons.forEach(System.out::println);
     }
 }
